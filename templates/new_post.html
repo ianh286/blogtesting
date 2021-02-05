@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Submit new Post</title>
+{% endblock %}
+
+{% block body %}
+
+<hr>
+
+<h2>New Post</h2>
+<form action='/posts' method='POST'>
+
+    <div class="input-group mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-default">Title</span>
+    <input type="text" class="form-control" name='title' id='title' aria-label="Title" aria-describedby="Title" autocomplete="off">
+    </div>
+    <div class="input-group mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-default">Author</span>
+    <input type="text" class="form-control" name='author' id='author' aria-label="Author" aria-describedby="Author">
+    </div>
+
+
+    <div class="mb-3">
+    <label for="content" class="form-label">Post</label>
+    <textarea class="form-control" name="content" id="content" rows="3"></textarea>
+    </div>
+
+
+    <input type='submit' value="Post">
+</form>
+
+
+
+
+{% endblock %}

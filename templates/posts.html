@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>POSTS</title>
+{% endblock %}
+
+{% block body %}
+
+
+<small>ALL POSTS</small>
+<a href="/posts/new" class="btn btn-success">+New Post</a>
+<p id="showtime">
+</p>
+
+<script>
+    function updateClock(){
+    var curtime = new Date();
+    var mtime = curtime.getHours() + ":" + curtime.getMinutes() + ":" + curtime.getSeconds()
+    document.getElementById("showtime").innerHTML = mtime
+
+    setTimeout(updateClock, 1000)
+
+    }
+    updateClock();
+
+
+
+
+    </script>
+
+{% for post in posts %}
+
+<div class = "jumbotron">
+
+    <h1 class="display-4">{{ post.title }}</h1>
+    <p style="white-space:pre-wrap" class="lead">{{ post.content }}</p>
+
+{% if post.author %}
+    <small>Written By: {{ post.author }} @ {{ post.date_posted}}</small>
+{% else %}
+    <small>Written By: Unknown {{ post.date_posted}}</small>
+{% endif %}
+    <br>
+
+ <a href="/posts/delete/{{post.id}}" class="badge rounded-pill bg-danger  text-dark">Delete</a>
+<a href="/posts/edit/{{post.id}}" class="badge rounded-pill bg-warning text-dark">Edit</a>
+   </div>
+
+<hr class="my-4">
+
+{% endfor %}
+
+{% endblock %}
